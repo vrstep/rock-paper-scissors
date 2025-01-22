@@ -2,7 +2,7 @@ let choices = ["rock", "paper", "scissors"];
 let humanScore = 0;
 let computerScore = 0;
 
-function getComputerChoice(choices) {
+function getComputerChoice() {
   let getRandomNumber = Math.floor(Math.random() * 3);
   return choices[getRandomNumber];
 }
@@ -16,6 +16,3 @@ function getHumanChoice() {
   }
   return getUserInput;
 }
-
-console.log(getComputerChoice(choices));
-console.log(getHumanChoice());
