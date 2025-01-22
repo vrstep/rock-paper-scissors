@@ -16,3 +16,49 @@ function getHumanChoice() {
   }
   return getUserInput;
 }
+
+function playRound(humanChoice, computerChoice) {
+  if (humanChoice == computerChoice) {
+    console.log("Tie");
+  }
+
+  if (humanChoice == "rock") {
+    if (computerChoice == "paper") {
+      computerScore++;
+      console.log("You lose! Paper beats rock");
+    }
+    if (computerChoice == "scissors") {
+      humanScore++;
+      console.log("You win! Rock beats scissors");
+    }
+  }
+
+  if (humanChoice == "paper") {
+    if (computerChoice == "scissors") {
+      computerScore++;
+      console.log("You lose! Scissors beat rock");
+    }
+    if (computerChoice == "rock") {
+      humanScore++;
+      console.log("You win! Rock beats paper");
+    }
+  }
+
+  if (humanChoice == "scissors") {
+    if (computerChoice == "paper") {
+      computerScore++;
+      console.log("You lose! Scissors beat paper");
+    }
+    if (computerChoice == "rock") {
+      humanScore++;
+      console.log("You win! Rock beats scissors");
+    }
+  }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+console.log(computerSelection);
+
+playRound(humanSelection, computerSelection);
