@@ -56,9 +56,17 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+function playGame() {
+  for (let i = 1; i <= 5; i++) {
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+  }
 
-console.log(computerSelection);
+  if (humanScore > computerScore) {
+    console.log("Congratulations! You won");
+    console.log(`Player: ${humanScore}, Computer: ${computerScore}`);
+  } else console.log("Game over!");
+}
 
-playRound(humanSelection, computerSelection);
+playGame();
