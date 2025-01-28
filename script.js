@@ -6,6 +6,24 @@ let choices = ["rock", "paper", "scissors"];
 let humanScore = 0;
 let computerScore = 0;
 
+rockButton.addEventListener("click", () => {
+  const humanSelection = "rock";
+  const computerSelection = getComputerChoice();
+  playRound(humanSelection, computerSelection);
+});
+
+paperButton.addEventListener("click", () => {
+  const humanSelection = "paper";
+  const computerSelection = getComputerChoice();
+  playRound(humanSelection, computerSelection);
+});
+
+scissorsButton.addEventListener("click", () => {
+  const humanSelection = "scissors";
+  const computerSelection = getComputerChoice();
+  playRound(humanSelection, computerSelection);
+});
+
 function getComputerChoice() {
   let getRandomNumber = Math.floor(Math.random() * 3);
   return choices[getRandomNumber];
@@ -60,4 +78,4 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-playGame();
+// playGame();
