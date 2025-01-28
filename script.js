@@ -1,3 +1,7 @@
+const rockButton = document.querySelector("#rockBtn");
+const paperButton = document.querySelector("#paperBtn");
+const scissorsButton = document.querySelector("#scissorsBtn");
+
 let choices = ["rock", "paper", "scissors"];
 let humanScore = 0;
 let computerScore = 0;
@@ -54,19 +58,6 @@ function playRound(humanChoice, computerChoice) {
       console.log("You win! Scissors beat paper");
     }
   }
-}
-
-function playGame() {
-  for (let i = 1; i <= 5; i++) {
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-  }
-
-  if (humanScore > computerScore) {
-    console.log("Congratulations! You won");
-    console.log(`Player: ${humanScore}, Computer: ${computerScore}`);
-  } else console.log("Game over!");
 }
 
 playGame();
