@@ -4,6 +4,7 @@ const scissorsButton = document.querySelector("#scissorsBtn");
 const resultContainer = document.querySelector("#result-container");
 const humanScoreContainer = document.querySelector(".human-score-container");
 const computerScoreContainer = document.querySelector(".computer-score-container");
+const winnerContainer = document.querySelector("#winner-container")
 
 let choices = ["rock", "paper", "scissors"];
 let humanScore = 0;
@@ -116,9 +117,9 @@ scissorsButton.addEventListener("click", () => {
 
 function announceWinner(humanScore, computerScore) {
   if (humanScore > computerScore && humanScore == 5) {
-    console.log("Victory!");
+    winnerContainer.textContent = "WINNER!"
   } else if (humanScore < computerScore && computerScore == 5) {
-    console.log("Game over!");
+    winnerContainer.textContent = "GAME OVER!"
   }
 }
 
