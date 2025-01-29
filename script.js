@@ -2,6 +2,8 @@ const rockButton = document.querySelector("#rockBtn");
 const paperButton = document.querySelector("#paperBtn");
 const scissorsButton = document.querySelector("#scissorsBtn");
 const resultContainer = document.querySelector("#result-container");
+const humanScoreContainer = document.querySelector(".human-score-container");
+const computerScoreContainer = document.querySelector(".computer-score-container");
 
 let choices = ["rock", "paper", "scissors"];
 let humanScore = 0;
@@ -10,7 +12,36 @@ let computerScore = 0;
 rockButton.addEventListener("click", () => {
   const humanSelection = "rock";
   const computerSelection = getComputerChoice();
-  playRound(humanSelection, computerSelection);
+  
+  if (humanSelection == computerSelection) {
+    console.log("Tie");
+    resultContainer.textContent = "Tie";
+  }
+
+  if (humanSelection == "rock") {
+    if (computerSelection == "paper") {
+      computerScore++;
+      console.log("You lose! Paper beats rock");
+      resultContainer.textContent = "You lose! Paper beats rock";
+    }
+    if (computerSelection == "scissors") {
+      humanScore++;
+      console.log("You win! Rock beats scissors");
+      resultContainer.textContent = "You win! Rock beats scissors";
+    }
+
+    humanScoreContainer.innerHTML = `
+    <span style="color: red;">Player</span><br>
+    ${humanScore}
+    `;
+    computerScoreContainer.innerHTML = `
+    <span style="color: red;">Computer</span><br>
+    ${computerScore}
+    `;
+    console.log(humanScore);
+    console.log(computerScore);
+    announceWinner(humanScore, computerScore);
+  }
 });
 
 paperButton.addEventListener("click", () => {
@@ -24,6 +55,14 @@ scissorsButton.addEventListener("click", () => {
   const computerSelection = getComputerChoice();
   playRound(humanSelection, computerSelection);
 });
+
+function announceWinner(humanScore, computerScore) {
+  if (humanScore > computerScore && humanScore == 5) {
+    console.log("Victory!");
+  } else if (humanScore < computerScore && computerScore == 5) {
+    console.log("Game over!");
+  }
+}
 
 function getComputerChoice() {
   let getRandomNumber = Math.floor(Math.random() * 3);
