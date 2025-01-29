@@ -1,3 +1,4 @@
+const buttonContainer = document.querySelector("#button-container")
 const rockButton = document.querySelector("#rockBtn");
 const paperButton = document.querySelector("#paperBtn");
 const scissorsButton = document.querySelector("#scissorsBtn");
@@ -112,14 +113,26 @@ scissorsButton.addEventListener("click", () => {
     `;
     console.log(humanScore);
     console.log(computerScore);
-    announceWinner(humanScore, computerScore);;
+    announceWinner(humanScore, computerScore);
 });
+
+console.log(buttonContainer.children)
+
+function endGame() {
+  buttonContainer.addEventListener("click", () => {
+    buttonContainer.childNodes.forEach(button => {
+      button.disabled = true;
+    });
+  })
+}
 
 function announceWinner(humanScore, computerScore) {
   if (humanScore > computerScore && humanScore == 5) {
-    winnerContainer.textContent = "WINNER!"
+    winnerContainer.textContent = "WINNER!";
+    endGame();
   } else if (humanScore < computerScore && computerScore == 5) {
-    winnerContainer.textContent = "GAME OVER!"
+    winnerContainer.textContent = "GAME OVER!";
+    endGame();
   }
 }
 
