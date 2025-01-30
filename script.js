@@ -162,6 +162,7 @@ function endGame() {
   restartButton.addEventListener("click", () => {
     restartGame();
   });
+  restartButton.addEventListener("click", restartGame);
 }
 
 function restartGame() {
@@ -181,11 +182,9 @@ function restartGame() {
   rockButton.addEventListener("click", () => {
     pickRock();
   });
-  buttonContainer.addEventListener("click", () => {
-    buttonContainer.childNodes.forEach(button => {
-      button.disabled = false;
-    });
-  })
+  buttonContainer.querySelectorAll("button").forEach(button => {
+    button.disabled = false;
+  });
   console.log("clicked");
 }
 
