@@ -44,39 +44,41 @@ function pickRock() {
   }
 }
 
+rockButton.addEventListener("click", pickRock);
 
-rockButton.addEventListener("click", () => {
-  const humanSelection = "rock";
-  const computerSelection = getComputerChoice();
+
+// rockButton.addEventListener("click", () => {
+//   const humanSelection = "rock";
+//   const computerSelection = getComputerChoice();
   
-  if (humanSelection == computerSelection) {
-    console.log("Tie");
-    resultContainer.textContent = "Tie";
-  }
+//   if (humanSelection == computerSelection) {
+//     console.log("Tie");
+//     resultContainer.textContent = "Tie";
+//   }
 
-  if (humanSelection == "rock") {
-    if (computerSelection == "paper") {
-      computerScore++;
-      console.log("You lose! Paper beats rock");
-      resultContainer.textContent = "You lose! Paper beats rock";
-    }
-    if (computerSelection == "scissors") {
-      humanScore++;
-      console.log("You win! Rock beats scissors");
-      resultContainer.textContent = "You win! Rock beats scissors";
-    }
+//   if (humanSelection == "rock") {
+//     if (computerSelection == "paper") {
+//       computerScore++;
+//       console.log("You lose! Paper beats rock");
+//       resultContainer.textContent = "You lose! Paper beats rock";
+//     }
+//     if (computerSelection == "scissors") {
+//       humanScore++;
+//       console.log("You win! Rock beats scissors");
+//       resultContainer.textContent = "You win! Rock beats scissors";
+//     }
 
-    humanScoreContainer.innerHTML = `
-    <span style="color: red;">Player</span><br>
-    ${humanScore}
-    `;
-    computerScoreContainer.innerHTML = `
-    <span style="color: red;">Computer</span><br>
-    ${computerScore}
-    `;
-    announceWinner(humanScore, computerScore);
-  }
-});
+//     humanScoreContainer.innerHTML = `
+//     <span style="color: red;">Player</span><br>
+//     ${humanScore}
+//     `;
+//     computerScoreContainer.innerHTML = `
+//     <span style="color: red;">Computer</span><br>
+//     ${computerScore}
+//     `;
+//     announceWinner(humanScore, computerScore);
+//   }
+// });
 
 paperButton.addEventListener("click", () => {
   const humanSelection = "paper";
@@ -149,19 +151,13 @@ scissorsButton.addEventListener("click", () => {
 });
 
 function endGame() {
-  buttonContainer.addEventListener("click", () => {
-    buttonContainer.childNodes.forEach(button => {
-      button.disabled = true;
-    });
-  })
+  buttonContainer.childNodes.forEach(button => {
+    button.disabled = true;
+  });
   const restartButton = document.createElement("button");
   restartButton.textContent = "Try again";
 
   document.body.appendChild(restartButton);
-
-  restartButton.addEventListener("click", () => {
-    restartGame();
-  });
   restartButton.addEventListener("click", restartGame);
 }
 
@@ -179,9 +175,7 @@ function restartGame() {
     `;
 
   winnerContainer.textContent = "";
-  rockButton.addEventListener("click", () => {
-    pickRock();
-  });
+  rockButton.addEventListener("click", pickRock);
   buttonContainer.querySelectorAll("button").forEach(button => {
     button.disabled = false;
   });
@@ -196,6 +190,8 @@ function announceWinner(humanScore, computerScore) {
     winnerContainer.textContent = "GAME OVER!";
     endGame();
   }
+  console.log(humanScore)
+  console.log(computerScore)
 }
 
 function getComputerChoice() {
