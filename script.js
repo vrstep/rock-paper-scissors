@@ -7,6 +7,11 @@ const humanScoreContainer = document.querySelector(".human-score-container");
 const computerScoreContainer = document.querySelector(".computer-score-container");
 const winnerContainer = document.querySelector("#winner-container");
 
+const restartButton = document.createElement("button");
+restartButton.textContent = "Try again";
+restartButton.style.display = "none";
+document.body.appendChild(restartButton);
+
 let choices = ["rock", "paper", "scissors"];
 let humanScore = 0;
 let computerScore = 0;
@@ -154,10 +159,11 @@ function endGame() {
   buttonContainer.childNodes.forEach(button => {
     button.disabled = true;
   });
-  const restartButton = document.createElement("button");
-  restartButton.textContent = "Try again";
+  restartButton.style.display = "block";
+  // const restartButton = document.createElement("button");
+  // restartButton.textContent = "Try again";
 
-  document.body.appendChild(restartButton);
+  // document.body.appendChild(restartButton);
   restartButton.addEventListener("click", restartGame);
 }
 
@@ -175,6 +181,8 @@ function restartGame() {
     `;
 
   winnerContainer.textContent = "";
+  resultContainer.textContent = "";
+  restartButton.style.display = "none";
   rockButton.addEventListener("click", pickRock);
   buttonContainer.querySelectorAll("button").forEach(button => {
     button.disabled = false;
