@@ -85,7 +85,7 @@ rockButton.addEventListener("click", pickRock);
 //   }
 // });
 
-paperButton.addEventListener("click", () => {
+function pickPaper() {
   const humanSelection = "paper";
   const computerSelection = getComputerChoice();
 
@@ -115,12 +115,47 @@ paperButton.addEventListener("click", () => {
     <span style="color: red;">Computer</span><br>
     ${computerScore}
     `;
-    console.log(humanScore);
-    console.log(computerScore);
     announceWinner(humanScore, computerScore);
-});
+}
 
-scissorsButton.addEventListener("click", () => {
+paperButton.addEventListener("click", pickPaper);
+
+// paperButton.addEventListener("click", () => {
+//   const humanSelection = "paper";
+//   const computerSelection = getComputerChoice();
+
+//   if (humanSelection == computerSelection) {
+//     console.log("Tie");
+//     resultContainer.textContent = "Tie";
+//   }
+
+//   if (humanSelection == "paper") {
+//     if (computerSelection == "scissors") {
+//       computerScore++;
+//       console.log("You lose! Scissors beat paper");
+//       resultContainer.textContent = "You lose! Scissors beat paper";
+//     }
+//     if (computerSelection == "rock") {
+//       humanScore++;
+//       console.log("You win! Paper beats rock");
+//       resultContainer.textContent = "You win! Paper beats rock";
+//     }
+//   }
+
+//   humanScoreContainer.innerHTML = `
+//     <span style="color: red;">Player</span><br>
+//     ${humanScore}
+//     `;
+//     computerScoreContainer.innerHTML = `
+//     <span style="color: red;">Computer</span><br>
+//     ${computerScore}
+//     `;
+//     console.log(humanScore);
+//     console.log(computerScore);
+//     announceWinner(humanScore, computerScore);
+// });
+
+function pickScissors() {
   const humanSelection = "scissors";
   const computerSelection = getComputerChoice();
 
@@ -150,10 +185,45 @@ scissorsButton.addEventListener("click", () => {
     <span style="color: red;">Computer</span><br>
     ${computerScore}
     `;
-    console.log(humanScore);
-    console.log(computerScore);
     announceWinner(humanScore, computerScore);
-});
+}
+
+scissorsButton.addEventListener("click", pickScissors);
+
+// scissorsButton.addEventListener("click", () => {
+//   const humanSelection = "scissors";
+//   const computerSelection = getComputerChoice();
+
+//   if (humanSelection == computerSelection) {
+//     console.log("Tie");
+//     resultContainer.textContent = "Tie";
+//   }
+
+//   if (humanSelection == "scissors") {
+//     if (computerSelection == "rock") {
+//       computerScore++;
+//       console.log("You lose! Rock beats scissors");
+//       resultContainer.textContent = "You lose! Rock beats scissors";
+//     }
+//     if (computerSelection == "paper") {
+//       humanScore++;
+//       console.log("You win! Scissors beat paper");
+//       resultContainer.textContent = "You win! Scissors beat paper";
+//     }
+//   }
+
+//   humanScoreContainer.innerHTML = `
+//     <span style="color: red;">Player</span><br>
+//     ${humanScore}
+//     `;
+//     computerScoreContainer.innerHTML = `
+//     <span style="color: red;">Computer</span><br>
+//     ${computerScore}
+//     `;
+//     console.log(humanScore);
+//     console.log(computerScore);
+//     announceWinner(humanScore, computerScore);
+// });
 
 function endGame() {
   buttonContainer.childNodes.forEach(button => {
