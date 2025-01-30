@@ -5,11 +5,45 @@ const scissorsButton = document.querySelector("#scissorsBtn");
 const resultContainer = document.querySelector("#result-container");
 const humanScoreContainer = document.querySelector(".human-score-container");
 const computerScoreContainer = document.querySelector(".computer-score-container");
-const winnerContainer = document.querySelector("#winner-container")
+const winnerContainer = document.querySelector("#winner-container");
 
 let choices = ["rock", "paper", "scissors"];
 let humanScore = 0;
 let computerScore = 0;
+
+function pickRock() {
+  const humanSelection = "rock";
+  const computerSelection = getComputerChoice();
+  
+  if (humanSelection == computerSelection) {
+    console.log("Tie");
+    resultContainer.textContent = "Tie";
+  }
+
+  if (humanSelection == "rock") {
+    if (computerSelection == "paper") {
+      computerScore++;
+      console.log("You lose! Paper beats rock");
+      resultContainer.textContent = "You lose! Paper beats rock";
+    }
+    if (computerSelection == "scissors") {
+      humanScore++;
+      console.log("You win! Rock beats scissors");
+      resultContainer.textContent = "You win! Rock beats scissors";
+    }
+
+    humanScoreContainer.innerHTML = `
+    <span style="color: red;">Player</span><br>
+    ${humanScore}
+    `;
+    computerScoreContainer.innerHTML = `
+    <span style="color: red;">Computer</span><br>
+    ${computerScore}
+    `;
+    announceWinner(humanScore, computerScore);
+  }
+}
+
 
 rockButton.addEventListener("click", () => {
   const humanSelection = "rock";
@@ -40,8 +74,6 @@ rockButton.addEventListener("click", () => {
     <span style="color: red;">Computer</span><br>
     ${computerScore}
     `;
-    console.log(humanScore);
-    console.log(computerScore);
     announceWinner(humanScore, computerScore);
   }
 });
@@ -116,14 +148,45 @@ scissorsButton.addEventListener("click", () => {
     announceWinner(humanScore, computerScore);
 });
 
-console.log(buttonContainer.children)
-
 function endGame() {
   buttonContainer.addEventListener("click", () => {
     buttonContainer.childNodes.forEach(button => {
       button.disabled = true;
     });
   })
+  const restartButton = document.createElement("button");
+  restartButton.textContent = "Try again";
+
+  document.body.appendChild(restartButton);
+
+  restartButton.addEventListener("click", () => {
+    restartGame();
+  });
+}
+
+function restartGame() {
+  computerScore = 0;
+  humanScore = 0;
+
+  humanScoreContainer.innerHTML = `
+    <span style="color: red;">Player</span><br>
+    ${humanScore}
+    `;
+    computerScoreContainer.innerHTML = `
+    <span style="color: red;">Computer</span><br>
+    ${computerScore}
+    `;
+
+  winnerContainer.textContent = "";
+  rockButton.addEventListener("click", () => {
+    pickRock();
+  });
+  buttonContainer.addEventListener("click", () => {
+    buttonContainer.childNodes.forEach(button => {
+      button.disabled = false;
+    });
+  })
+  console.log("clicked");
 }
 
 function announceWinner(humanScore, computerScore) {
